@@ -22,8 +22,9 @@ class Follower(Base):
     __tablename__ = 'follower'
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
-    user_from_id = Column(Integer, ForeignKey('user.id'))
-    user_to_id = Column(Integer, ForeignKey('user.id'))
+    id = Column(Integer, primary_key=True)
+    userfrom_id = Column(Integer, ForeignKey('user.id'))
+    userto_id = Column(Integer, ForeignKey('user.id'))
 
 class Comment(Base):
     __tablename__ = 'comment'
@@ -48,9 +49,9 @@ class Media(Base):
     id = Column(Integer, primary_key=True)
     tyype = Column(String(250))
     url = Column(String(250))
-    post_id = Column(Integer, ForeignKey('media.id'))
+    post_id = Column(Integer, ForeignKey('post.id'))
 
-    def to_dict(self):
+def to_dict(self):
         return {}
 
 ## Draw from SQLAlchemy base
